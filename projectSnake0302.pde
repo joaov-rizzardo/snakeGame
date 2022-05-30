@@ -10,7 +10,8 @@ float snakeSpeed = 1;
 int score = 0;
 int highScore = 0;
 int level = 0;
-int tela = 1;
+int screen = 1;
+int difficulty = 1;
 
 
 void setup() {
@@ -32,19 +33,25 @@ void setup() {
   
   m = new Menu();
   
-  frameRate(10);
+  frameRate(5);
   
   
 }
 
 void draw() {
   
-  if(tela == 1){
-    m.main();
+  if(screen == 1){
+    m.screen1();
   }
   
+  if(screen == 2){
+    m.screen2();
+  }
   
-  if(tela == 2){
+  if(screen == 3){
+    
+      int rate = m.changeDifficulty(difficulty);
+      frameRate(rate);
       background(0, 0, 0);
       translate((width/2)-((b.boardHeight/2)*scl)-100, (height/2)-((b.boardHeight/2)*scl));
       noStroke();
@@ -64,9 +71,36 @@ void draw() {
   
 }
 
-
-
 void keyPressed() {
+  
+  if(key == 'm'){
+    screen = 1;
+  }
+  
+  if(screen == 1){
+    if(key == ENTER){
+      screen = 2;
+    }
+  }
+  
+  if(screen == 2){
+    if(key == '1'){
+      difficulty = 1;
+      screen = 3;
+    }
+    
+    if(key == '2'){
+      difficulty = 2;
+      screen = 3;
+    }
+    
+    if(key == '3'){
+      difficulty = 3;
+      screen = 3;
+    }
+  }
+  
+  
   if (key == CODED) {
     if (keyCode == UP) {
       snake.xDir = 0;
@@ -83,9 +117,6 @@ void keyPressed() {
     }
   }
   
-  if(key == ENTER){
-    tela = 2;
-  }
   //RESTART
   if (key == 'r') {
     setup();
@@ -124,22 +155,23 @@ void scoreBoard() {
   text(highScore, textLocx+70, textLocy+15);
   text("PAUSAR: P", textLocx, textLocy+55);
   text("JOGAR: O", textLocx, textLocy+70);
-  text("LEVEL:", textLocx, textLocy+95);
-  text(level, textLocx+45, textLocy+95);
+  text("MENU: M", textLocx, textLocy+85);
+  text("LEVEL:", textLocx, textLocy+100);
+  text(level, textLocx+45, textLocy+100);
   
   //ITEM INFO
   fill(theme.food);
-  rect(textLocx, textLocy+110, scl, scl); 
-  text("COMIDA", textLocx+scl+5, textLocy+122);  
+  rect(textLocx, textLocy+120, scl, scl); 
+  text("COMIDA", textLocx+scl+5, textLocy+132);  
  
   fill(theme.snake);
-  rect(textLocx, textLocy+135, scl, scl); 
-  text("COBRA", textLocx+scl+5, textLocy+147);    
+  rect(textLocx, textLocy+145, scl, scl); 
+  text("COBRA", textLocx+scl+5, textLocy+157);    
   
   stroke(theme.poisonStroke);
   fill(theme.poison);
-  rect(textLocx, textLocy+160, scl, scl); 
-  text("VENENO", textLocx+scl+5, textLocy+172); 
+  rect(textLocx, textLocy+170, scl, scl); 
+  text("VENENO", textLocx+scl+5, textLocy+182); 
   
   
   //THEME INFO
