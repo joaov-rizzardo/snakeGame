@@ -13,9 +13,21 @@ int level = 0;
 int screen = 1;
 int difficulty = 1;
 
+import ddf.minim.*;
+
+// Declaração de um objeto da classe Minim. Será utilizada para controlar os áudios do programa.
+Minim manager;
+
+AudioPlayer pointEffect;
+AudioPlayer gameoverEffect;
 
 void setup() {
   size(900, 800);
+  
+  manager = new Minim(this);
+  // Carrega o arquivo de áudio.
+  pointEffect = manager.loadFile("scorePoint.mp3");
+  gameoverEffect = manager.loadFile("gameover.mp3");
   
   // SELECIONA O TEMA PADRÃO
   // CADA FUNÇÃO THEME É RESPONSÁVEL POR SETAR AS CORES DO TEMA

@@ -22,6 +22,9 @@ class Snake {
     float d = dist(snakeLoc.x, snakeLoc.y, f.food.x, f.food.y);
     
     if (d < 1) {
+      pointEffect.rewind();
+      pointEffect.play();
+    
       total++;
       return true;
     } else {
@@ -50,6 +53,9 @@ class Snake {
     }
   }
   void gameOver() {
+     gameoverEffect.rewind();
+     gameoverEffect.play();
+      
     fill(255, 0, 0);
     textSize(30);
     textAlign(CENTER);
