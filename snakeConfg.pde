@@ -7,7 +7,6 @@ class Snake {
   
   ArrayList<PVector> body = new ArrayList<PVector>();
 
-  
   void render() {
     fill(theme.snake);
     stroke(theme.snakeStroke);

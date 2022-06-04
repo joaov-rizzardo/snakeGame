@@ -49,16 +49,27 @@ void draw() {
   }
   
   if(screen == 3){
-    
+      
+      // RESPONSÁVEL POR SELECIONAR DIFICULDADE DO JOGO
+      // BASEADO EM FRAMERATE
       int rate = m.changeDifficulty(difficulty);
       frameRate(rate);
+      
       background(0, 0, 0);
       translate((width/2)-((b.boardHeight/2)*scl)-100, (height/2)-((b.boardHeight/2)*scl));
       noStroke();
+      
+      // GERA O MENU LATERAL
       scoreBoard();
       
+      // RENDERIZA A TELA DE JOGO
       b.render();
+      
+      // VERIFICA O LEVEL
+      // A CADA 5 PONTOS AUMENTA UM LEVEL
       b.level();
+      
+      // RENDERIZA AS COMIDAS E OS VENENOS DE FORMA RANDOMICA NA TELA
       f.render();
       
       snake.update();

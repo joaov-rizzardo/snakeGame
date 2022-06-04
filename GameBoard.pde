@@ -15,8 +15,12 @@ class Board {
   }
   
   void level() {
+    // A CADA 5 PONTOS SOBE UM LEVEL
     if (currentScore == 5) {
+      
       level++;
+      
+      // VARIAVEL UTILIZADA PARA GERAR O VENENO
       f.currentLevel++;
       currentScore = 0;
     }

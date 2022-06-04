@@ -1,27 +1,27 @@
 class Food {
   PVector food = new PVector((floor(random(b.boardWidth))), (floor(random(b.boardHeight))));
-  //PVector poison = new PVector((floor(random(b.boardWidth))), (floor(random(b.boardHeight))));
   ArrayList<PVector> poison = new ArrayList<PVector>();
   
   int currentLevel = 0;
   
   void render() {
+    
     stroke(theme.foodStroke);
-    fill(theme.food); //HEX# F77F7F
+    fill(theme.food);
     rect(food.x*scl, food.y*scl, scl, scl);
     
+    // CADA VEZ QUE SUBIR UM LEVEL ADICIONA UM VENENO
     if (currentLevel == 1) {
       poison.add(new PVector((floor(random(b.boardWidth))), (floor(random(b.boardHeight)))));
-      //for (int i = 0; i < poison.size(); i++) {
-      //  rect(poison.get(i).x*scl, poison.get(i).y*scl, scl, scl);
-      //}
-      
+      for (int i = 0; i < poison.size(); i++) {
+        rect(poison.get(i).x*scl, poison.get(i).y*scl, scl, scl);
+      }
       
       currentLevel = 0;
     }
     
     stroke(theme.poisonStroke);
-    fill(theme.poison); //HEX# 575F68
+    fill(theme.poison);
     for (PVector p : poison) {
         rect(p.x*scl, p.y*scl, scl, scl);
     }
