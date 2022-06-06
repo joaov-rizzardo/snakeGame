@@ -24,8 +24,7 @@ class Food {
     fill(theme.poison);
     for (PVector p : poison) {
         rect(p.x*scl, p.y*scl, scl, scl);
-    }
-    
+    }  
     
   }
   

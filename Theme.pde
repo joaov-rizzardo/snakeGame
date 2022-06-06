@@ -10,67 +10,65 @@ class Theme {
   
   color poisonText;
   
-  //THEME #1 - SCHI-FI
+  // BÁSICO
   void theme01 () {
-    background = color(43, 46, 50);
-    poison = color(87, 95, 104);
+    background = color(255, 255, 255);
+    poison = color(255,0,0);
     poisonStroke = color(255, 255, 255, 0);
-    snake = color(71, 255, 232);
+    snake = color(128, 128, 128);
     snakeStroke = color(255, 255, 255, 0);
-    food = color(247, 127, 127);
-    foodStroke = color(255, 255, 255, 0);
-    
-    poisonText = color(87, 95, 104);
-  }
-
-  //THEME #2 - SIMPLE
-  void theme02 () {
-    background = color(242, 242, 242);
-    poison = color(87, 95, 104);
-    poisonStroke = color(255, 255, 255, 0);
-    snake = color(242, 242, 242);
-    snakeStroke = color(0, 255);
-    food = color(247, 127, 127);  
+    food = color(128, 128, 128);
     foodStroke = color(255, 255, 255, 0);
     
     poisonText = color(87, 95, 104);
   }
   
-  //THEME #3 - B/W
+  // ROXO
+  void theme02 () {
+    background = color(55, 27, 88);
+    poison = color(255, 0 ,0);
+    poisonStroke = color(128, 128, 128);
+    snake = color(76, 53, 117);
+    snakeStroke = color(128, 128, 128);
+    food = color(255);  
+    foodStroke = color(128, 128, 128);
+    
+    poisonText = color(87, 95, 104);
+  }
+  
+  // CINZA
   void theme03 () {
-    background = color(242, 242, 242);
+    background = color(128, 128, 128);
     poison = color(26, 26, 26);
     poisonStroke = color(87, 95, 104, 255);
-    snake = color(77, 77, 77);
-    snakeStroke = color(255, 255, 255, 0);    
+    snake = color(255);
+    snakeStroke = color(255, 255, 255);    
     food = color(255, 255, 255);  
-    foodStroke = color(0, 0, 0, 255);
+    foodStroke = color(255, 255, 255);
     
-    poison = color(87, 95, 104);
   }
   
-  //THEME #4 - PIPE
+  // LARANJA
   void theme04 () {
-    background = color(216, 233, 245);
-    poison = color(36, 58, 134);
+    background = color(238, 183, 107);
+    poison = color(49, 11, 11);
     poisonStroke = color(255, 255, 255, 0);
-    snake = color(255, 255, 255);
-    snakeStroke = color(40, 45, 132, 255);
-    food = color(190, 23, 78);
+    snake = color(226, 112, 58);
+    snakeStroke = color(226, 112, 58);
+    food = color(156, 61, 84);
     foodStroke = color(255, 255, 255, 0);
     
-    poison = color(36, 58, 134);
   }
   
-  //THEME #5 - GREEN ROBOT
+  // ROSA
   void theme05 () {
-    background = color(159, 220, 210);
-    poison = color(247, 127, 127);
+    background = color(253, 186, 248);
+    poison = color(236, 163, 245);
     poisonStroke = color(255, 255, 255, 0);
-    snake = color(255, 237, 164);
-    snakeStroke = color(255, 255, 255, 0);
-    food = color(56, 182, 192);
-    foodStroke = color(255, 255, 255, 0);
+    snake = color(237, 255, 169);
+    snakeStroke = color(237, 255, 169);
+    food = color(176, 239, 200);
+    foodStroke = color(176, 239, 200);
     
     poison = color(247, 127, 127);
   }  

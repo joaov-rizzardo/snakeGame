@@ -10,7 +10,7 @@ class Board {
   
   void render() {
     noStroke();
-    fill(theme.background); //HEX# 2B2E32
+    fill(theme.background);
     rect(0, 0, b.boardWidth*scl, b.boardHeight*scl);
   }
   

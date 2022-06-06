@@ -6,12 +6,12 @@ Theme theme;
 Menu m;
 
 int scl = 20;
-float snakeSpeed = 1;
 int score = 0;
 int highScore = 0;
 int level = 0;
-int screen = 1;
+int screen = 0;
 int difficulty = 1;
+boolean pressed = false;
 
 import ddf.minim.*;
 
@@ -20,6 +20,7 @@ Minim manager;
 
 AudioPlayer pointEffect;
 AudioPlayer gameoverEffect;
+AudioPlayer selectEffect;
 
 void setup() {
   size(900, 800);
@@ -28,11 +29,12 @@ void setup() {
   // Carrega o arquivo de áudio.
   pointEffect = manager.loadFile("scorePoint.mp3");
   gameoverEffect = manager.loadFile("gameover.mp3");
+  selectEffect = manager.loadFile("select.mp3");
   
   // SELECIONA O TEMA PADRÃO
   // CADA FUNÇÃO THEME É RESPONSÁVEL POR SETAR AS CORES DO TEMA
   theme = new Theme();
-  theme.theme04();
+  theme.theme01();
   
   // SELECIONA A FONTE
   gotham = createFont("Gotham-Bold.otf", 12);
@@ -41,6 +43,7 @@ void setup() {
   b = new Board(30, 30);
   
   snake = new Snake();
+  
   f = new Food();
   
   m = new Menu();
@@ -52,12 +55,28 @@ void setup() {
 
 void draw() {
   
+  if(screen == 0){
+    m.screen0();
+  }
+  
   if(screen == 1){
     m.screen1();
   }
   
   if(screen == 2){
     m.screen2();
+  }
+  
+  if(screen == 4){
+    m.screen4();
+  }
+  
+  if(screen == 5){
+    m.screen5();
+  }
+  
+  if(screen == 6){
+    m.screen6();
   }
   
   if(screen == 3){
@@ -97,29 +116,73 @@ void draw() {
 void keyPressed() {
   
   if(key == 'm'){
+    selectEffect.rewind();
+    selectEffect.play();
     screen = 1;
   }
   
-  if(screen == 1){
+  if(screen == 0){
     if(key == ENTER){
+      selectEffect.rewind();
+      selectEffect.play();
+      screen = 1;
+    }
+  }
+  
+  if(screen == 6){
+    if(key == ENTER){
+      selectEffect.rewind();
+      selectEffect.play();
+      screen = 3;
+    }
+  }
+  
+  if(screen == 1){
+    if(key == '1'){
+      selectEffect.rewind();
+      selectEffect.play();
       screen = 2;
+      pressed = true;
+    }
+    
+    if(key == '2'){
+      selectEffect.rewind();
+      selectEffect.play();
+      screen = 5;
+    }
+    
+    if(key == '3'){
+      selectEffect.rewind();
+      selectEffect.play();
+      screen = 4;
     }
   }
   
   if(screen == 2){
     if(key == '1'){
-      difficulty = 1;
-      screen = 3;
+      if(pressed){
+        pressed = false;
+      }else{
+        selectEffect.rewind();
+        selectEffect.play();
+        difficulty = 1;
+        screen = 6;
+      }
+
     }
     
     if(key == '2'){
+      selectEffect.rewind();
+      selectEffect.play();
       difficulty = 2;
-      screen = 3;
+      screen = 6;
     }
     
     if(key == '3'){
+      selectEffect.rewind();
+       selectEffect.play();
       difficulty = 3;
-      screen = 3;
+      screen = 6;
     }
   }
   
@@ -198,26 +261,26 @@ void scoreBoard() {
   
   
   //THEME INFO
-  fill(71, 255, 232);
+  fill(255, 255, 255);
   rect(textLocx, textLocy+250, scl, scl); 
-  text("THEME 01: SCI-FI", textLocx+scl+5, textLocy+262);
+  text("TEMA 01: BASICO", textLocx+scl+5, textLocy+262);
   
-  fill(247, 127, 127);
+  fill(55, 27, 88);
   rect(textLocx, textLocy+275, scl, scl); 
-  text("THEME 02: SIMPLE", textLocx+scl+5, textLocy+287);   
+  text("TEMA 02: ROXO", textLocx+scl+5, textLocy+287);   
   
   stroke(87, 95, 104, 255);
-  fill(0, 0, 0);
+  fill(128, 128, 128);
   rect(textLocx, textLocy+300, scl, scl);
   fill(87, 95, 104);
-  text("THEME 03: BLACK & WHITE", textLocx+scl+5, textLocy+312); 
+  text("TEMA 03: CINZA", textLocx+scl+5, textLocy+312); 
   
   noStroke();
-  fill(36, 58, 134);
+  fill(238, 183, 107);
   rect(textLocx, textLocy+325, scl, scl); 
-  text("THEME 04: PIPE", textLocx+scl+5, textLocy+337);   
+  text("TEMA 04: LARANJA", textLocx+scl+5, textLocy+337);   
  
-  fill(159, 220, 210);
+  fill(253, 186, 248);
   rect(textLocx, textLocy+350, scl, scl); 
-  text("THEME 05: GREEN ROBOT", textLocx+scl+5, textLocy+362);    
+  text("TEMA 05: ROSA", textLocx+scl+5, textLocy+362);    
 }

@@ -1,10 +1,17 @@
 class Snake {
+  // POSIÇÃO INICIAL RANDOMICA DA COBRA
   PVector snakeLoc = new PVector((floor(random(b.boardWidth))), (floor(random(b.boardHeight))));
   
+  // DIREÇÃO EM X QUE A COBRA ESTÁ PERCORRENDO
   float xDir = 1;
+
+  // DIREÇÃO EM Y QUE A COBRA ESTÁ PERCORRENDO
   float yDir = 0;
+
+  // TAMANHO TOTAL DA COBRA
   int total = 0;
   
+  // VARIAVEL CONTENDO O CORPO DA COBRA
   ArrayList<PVector> body = new ArrayList<PVector>();
 
   void render() {
@@ -34,6 +41,8 @@ class Snake {
   
   
   void death() {
+
+    // VERIFICA SE A COBRA ESTÁ COLIDINDO COM SEU PRÓPRIO CORPO OS AS BORDAS DO MAPA
     for (int i = 0; i < body.size(); i++) {
       PVector pos = body.get(i);
       float d = dist(snakeLoc.x, snakeLoc.y, pos.x, pos.y);
@@ -41,6 +50,8 @@ class Snake {
         gameOver();
       }
     }
+
+    // VERIFICA SE A COBRA COLIDIU COM UM VENENO
     if (level > 0) {
       float p;
       for (int i = 0; i < f.poison.size(); i++) {
@@ -52,6 +63,7 @@ class Snake {
       }
     }
   }
+
   void gameOver() {
      gameoverEffect.rewind();
      gameoverEffect.play();
@@ -61,7 +73,7 @@ class Snake {
     textAlign(CENTER);
     text("GAME OVER", b.boardWidth/2*scl, b.boardHeight/2*scl);
     textAlign(CENTER, TOP);
-    text("PRESS 'R' TO RESTART", b.boardWidth/2*scl, b.boardHeight/2*scl);
+    text("PRESSIONE 'R' PARA RECOMEÇAR", b.boardWidth/2*scl, b.boardHeight/2*scl);
     body.clear();
     noLoop();
         
@@ -80,8 +92,8 @@ class Snake {
       body.add(new PVector(snakeLoc.x, snakeLoc.y));
     } 
     
-    snakeLoc.x += (snakeSpeed * xDir);
-    snakeLoc.y += (snakeSpeed * yDir);
+    snakeLoc.x += (1 * xDir);
+    snakeLoc.y += (1 * yDir);
     
     snakeLoc.x = constrain(snakeLoc.x, 0, b.boardWidth-1);
     snakeLoc.y = constrain(snakeLoc.y, 0, b.boardHeight-1); 
